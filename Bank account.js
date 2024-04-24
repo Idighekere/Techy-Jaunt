@@ -22,83 +22,79 @@
 // console.log(person1.accountDetails())
 // console.log(person2.accountDetails())
 class BankAccount {
-    constructor(accountNumber, accountHolder) {
-        this._accountNumber = accountNumber
-        this._accountHolder = accountHolder
-        this._balance = 0
-        this._transactions = []
-    }
+  constructor(accountNumber, accountHolder) {
+    this._accountNumber = accountNumber;
+    this._accountHolder = accountHolder;
+    this._balance = 0;
+    this._transactions = [];
+  }
 
-    get accountNumber() {
-        return this._accountNumber
-    }
-    set accountNumber(num) {
-        return this._accountNumber = num
-    }
+  get accountNumber() {
+    return this._accountNumber;
+  }
+  set accountNumber(num) {
+    return (this._accountNumber = num);
+  }
 
-    get accountHolder() {
-        return this._accountHolder
-    }
-    set accountHolder(name) {
-        return this._accountHolder = name
-    }
-    get balance() {
-        return this._balance
-    }
-    set balance(num) {
-        return this._balance = num
-    }
-    deposit(amount) {
-        // const balance = this._balance
+  get accountHolder() {
+    return this._accountHolder;
+  }
+  set accountHolder(name) {
+    return (this._accountHolder = name);
+  }
+  get balance() {
+    return this._balance;
+  }
+  set balance(num) {
+    return (this._balance = num);
+  }
+  deposit(amount) {
+    // const balance = this._balance
 
-        if (typeof amount !== "number") {
-            return `Amount must be a number`
-        } else {
-            this._balance += amount
-            const depositTransaction = new Transaction("deposit", amount)
-            this._transactions.push(depositTransaction)
-
-        }
-
+    if (typeof amount !== "number") {
+      return `Amount must be a number`;
+    } else {
+      this._balance += amount;
+      const depositTransaction = new Transaction("deposit", amount);
+      this._transactions.push(depositTransaction);
     }
-    withdraw(amount) {
-        try {
-
-            if (this._balance < amount) {
-                throw new Error(`Insufficient Balance`)
-            } else {
-                this._balance -= amount;
-                const withdrawalTransaction = new Transaction("withdraw", amount)
-                this._transactions.push(withdrawalTransaction)
-            }
-        } catch (error) {
-            console.error(error.message)
-        }
-
+  }
+  withdraw(amount) {
+    try {
+      if (this._balance < amount) {
+        throw new Error(`Insufficient Balance`);
+      } else {
+        this._balance -= amount;
+        const withdrawalTransaction = new Transaction("withdraw", amount);
+        this._transactions.push(withdrawalTransaction);
+      }
+    } catch (error) {
+      console.error(error.message);
     }
-    getTransactions() {
-        return this._transactions
-    }
+  }
+  getTransactions() {
+    return this._transactions;
+  }
 }
 
 class Transaction {
-    constructor(type, amount) {
-        this._type = type
-        this._amount = amount
-        this._timestamp = new Date()
-    }
+  constructor(type, amount) {
+    this._type = type;
+    this._amount = amount;
+    this._timestamp = new Date();
+  }
 }
-const acc = new BankAccount(1234567890, "Idighekere Udo")
+const acc = new BankAccount(1234567890, "Idighekere Udo");
 // const acc1 = new BankAccount(1234567890, "Idighekere Udo", 2000)
-console.log(`Initial Balance: NGN${acc.balance}`)
+console.log(`Initial Balance: NGN${acc.balance}`);
 // console.log(`Initial Balance: NGN${acc1.balance}`)
-acc.deposit(12500)
-console.log(`Balance after Deposit: NGN${acc.balance}`)
-acc.withdraw(7000)
-console.log(`Balance after Withdraw: NGN${acc.balance}`)
-acc.withdraw(100000)
-console.log(`Balance after Withdraw: NGN${acc.balance}`)
-acc.deposit(100000)
-console.log(`Balance after Deposit: NGN${acc.balance}`)
+acc.deposit(12500);
+console.log(`Balance after Deposit: NGN${acc.balance}`);
+acc.withdraw(7500);
+console.log(`Balance after Withdraw: NGN${acc.balance}`);
+acc.withdraw(100000);
+console.log(`Balance after Withdraw: NGN${acc.balance}`);
+acc.deposit(100000);
+console.log(`Balance after Deposit: NGN${acc.balance}`);
 
-console.log(acc.getTransactions())
+console.log(acc.getTransactions());
