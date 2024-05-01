@@ -148,7 +148,7 @@ console.log(`Balance after Deposit: NGN${acc.balance}`);
 console.log(`Andikan's Balance after Deposit: NGN${acc2.balance}`);
 acc.withdraw(500);
 acc.withdraw(2500);
-acc.withdraw(500);
+// acc.withdraw(500);
 acc.withdraw(500);
 acc.transfer(5000, acc2);
 console.log(`Balance after Withdraw: NGN${acc.balance}`);
